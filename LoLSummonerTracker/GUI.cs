@@ -14,13 +14,13 @@ namespace LoLSummonerTracker
 {
     public partial class GUI : Form
     {
-        Logic logic;
-
+        
         public GUI()
         {
             InitializeComponent();
-            label1.Text = "10";
-            logic = new Logic(this, 0, 10);
+
+            //SpeechListener speechListener = new SpeechListener(this);
+            //speechListener.StartListening();
         }
 
         public void setLabel(string text)
@@ -28,13 +28,15 @@ namespace LoLSummonerTracker
             label1.Text = text;
         }
 
+
+        //buttons
         private void button1_Click(object sender, EventArgs e)
-        {
-            SpeechListener speechListener = new SpeechListener(this);
-            speechListener.StartListening();
-            //logic.start();
-        }
+        {new Logic(0, 10, label1).start(); new Logic(0, 15, label1b).start(); }
 
+        private void button2_Click(object sender, EventArgs e)
+        {new Logic(0, 10, label2).start();}
 
+        private void button3_Click(object sender, EventArgs e)
+        {new Logic(0, 10, label3).start();}
     }
 }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace LoLSummonerTracker
 {
@@ -10,11 +11,11 @@ namespace LoLSummonerTracker
     {
         private System.Windows.Forms.Timer timer;
         int timeInSeconds = 60; //default
-        GUI gui;
+        Label label;
 
-        public Logic(GUI gui, int minutes, int seconds)
+        public Logic(int minutes, int seconds, Label label)
         {
-            this.gui = gui;
+            this.label = label;
             timeInSeconds = minutes * 60 + seconds;
         }
 
@@ -33,7 +34,7 @@ namespace LoLSummonerTracker
         {
 
             timeInSeconds--;
-            gui.setLabel(timeInSeconds.ToString());
+            label.Text = timeInSeconds.ToString();
 
             if (timeInSeconds == 0)
             {
@@ -46,7 +47,9 @@ namespace LoLSummonerTracker
         {
 
             timer.Stop(); timer.Dispose();
-            gui.setLabel("TIMER ENDED");
+
+            label.Text = "Timer ended";
+
 
         }
 
