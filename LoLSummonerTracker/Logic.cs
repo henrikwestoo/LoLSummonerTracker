@@ -50,6 +50,9 @@ namespace LoLSummonerTracker
 
             label.Text = "Timer ended";
 
+            System.Media.SoundPlayer player = new System.Media.SoundPlayer(@"C:\Users\Henrik\Desktop\timerover.wav");
+            player.Play();
+
 
         }
 

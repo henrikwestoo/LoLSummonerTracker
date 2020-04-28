@@ -19,8 +19,8 @@ namespace LoLSummonerTracker
         {
             InitializeComponent();
 
-            //SpeechListener speechListener = new SpeechListener(this);
-            //speechListener.StartListening();
+            SpeechListener speechListener = new SpeechListener(this);
+            speechListener.StartListening();
         }
 
         public void setLabel(string text)
