@@ -1,32 +1,40 @@
 ﻿using RiotSharp;
+using RiotSharp.Endpoints.SummonerEndpoint;
+using RiotSharp.Endpoints.StaticDataEndpoint;
 using RiotSharp.Misc;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace LoLSummonerTracker
 {
     public class GameInfoGetter
     {
+        Summoner summoner;
+        RiotApi api;
 
-        public GameInfoGetter(){
-        
-        var api = RiotApi.GetDevelopmentInstance("RGAPI-e561c93b-842d-4bf0-913b-d0aac559f3a0");
+        public GameInfoGetter()
+        {
+
+            api = RiotApi.GetDevelopmentInstance("RGAPI-e561c93b-842d-4bf0-913b-d0aac559f3a0");
 
             try
             {
-                var summoner = api.Summoner.GetSummonerByNameAsync(Region.Euw, "Boomkin").Result;
-                var name = summoner.Name;
-                var level = summoner.Level;
-                var accountId = summoner.AccountId;
+                summoner = api.Summoner.GetSummonerByNameAsync(Region.Euw, "Boomkin").Result;
+
+
             }
             catch (RiotSharpException ex)
             {
                 // Handle the exception however you want.
             }
 
+
+        }
+
+        public string getId()
+        {
+
+            return summoner.Id;
 
         }
 
