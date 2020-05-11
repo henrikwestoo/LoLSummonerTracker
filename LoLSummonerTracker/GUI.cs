@@ -19,16 +19,16 @@ namespace LoLSummonerTracker
         {
             InitializeComponent();
 
-            pictureBox1.Image = Image.FromFile(@"C:\Users\Henrik\Desktop\SummonerTrackerImages\Lucian.png");
-            pictureBox2.Image = Image.FromFile(@"C:\Users\Henrik\Desktop\SummonerTrackerImages\Lucian.png");
-            pictureBox3.Image = Image.FromFile(@"C:\Users\Henrik\Desktop\SummonerTrackerImages\Lucian.png");
-            pictureBox4.Image = Image.FromFile(@"C:\Users\Henrik\Desktop\SummonerTrackerImages\Lucian.png");
-            pictureBox5.Image = Image.FromFile(@"C:\Users\Henrik\Desktop\SummonerTrackerImages\Lucian.png");
+            //pictureBox1.Image = Image.FromFile(@"C:\Users\Henrik\Desktop\SummonerTrackerImages\Lucian.png");
+            //pictureBox2.Image = Image.FromFile(@"C:\Users\Henrik\Desktop\SummonerTrackerImages\Lucian.png");
+            //pictureBox3.Image = Image.FromFile(@"C:\Users\Henrik\Desktop\SummonerTrackerImages\Lucian.png");
+            //pictureBox4.Image = Image.FromFile(@"C:\Users\Henrik\Desktop\SummonerTrackerImages\Lucian.png");
+           // pictureBox5.Image = Image.FromFile(@"C:\Users\Henrik\Desktop\SummonerTrackerImages\Lucian.png");
 
             SpeechListener speechListener = new SpeechListener(this);
             speechListener.StartListening();
 
-            var gameInfo = new GameInfoGetter();
+           // var gameInfo = new GameInfoGetter();
         }
 
         public void setLabel(string text)

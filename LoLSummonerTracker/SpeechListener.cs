@@ -7,6 +7,7 @@ namespace LoLSummonerTracker
     {
 
         GUI gui;
+        bool activated;
 
         public SpeechListener(GUI gui) { this.gui = gui; }
 
@@ -19,10 +20,20 @@ namespace LoLSummonerTracker
 
             SpeechRecognitionEngine recognizer =
               new SpeechRecognitionEngine(
-                new System.Globalization.CultureInfo("en-US"));
-            
+                new System.Globalization.CultureInfo("en-US")
+                );
+
+            Choices choiceList = new Choices();
+            choiceList.Add(new string[] { "monkey", "gorilla"});
+
+            GrammarBuilder grammarBuilder = new GrammarBuilder();
+            grammarBuilder.Culture = new System.Globalization.CultureInfo("en-US");
+            grammarBuilder.Append(choiceList);
+
+            Grammar grammar = new Grammar(grammarBuilder);
+
                 // Create and load a dictation grammar.  
-                recognizer.LoadGrammar(new DictationGrammar());
+                recognizer.LoadGrammar(grammar);
 
                 // Add a handler for the speech recognized event.  
                 recognizer.SpeechRecognized +=
