@@ -7,24 +7,29 @@ namespace LoLSummonerTracker
     {
 
         GUI gui;
+        SpeechRecognitionEngine recognizer;
         bool activated;
 
-        public SpeechListener(GUI gui) { this.gui = gui; }
+        public SpeechListener(GUI gui) { 
+            this.gui = gui;
+
+            activated = false;
+        }
 
         public void StartListening() {
 
-            gui.setLabel("speech activated");
+            
 
-            // Create an in-process speech recognizer for the en-US locale.  
-
-
-            SpeechRecognitionEngine recognizer =
-              new SpeechRecognitionEngine(
-                new System.Globalization.CultureInfo("en-US")
-                );
+            // Create an in-process speech recognizer for the en-US locale
+            recognizer = new SpeechRecognitionEngine(new System.Globalization.CultureInfo("en-US"));
 
             Choices choiceList = new Choices();
-            choiceList.Add(new string[] { "monkey", "gorilla"});
+            if (!activated)
+            {
+                choiceList.Add(new string[] { "monkey"});
+            }
+
+            else { choiceList.Add(new string[] { "gorilla" , "baboon" }); }
 
             GrammarBuilder grammarBuilder = new GrammarBuilder();
             grammarBuilder.Culture = new System.Globalization.CultureInfo("en-US");
@@ -44,19 +49,30 @@ namespace LoLSummonerTracker
 
                 // Start asynchronous, continuous speech recognition.  
                 recognizer.RecognizeAsync(RecognizeMode.Multiple);
+        }
 
-            
-
-
+        public void StopListening() {
+            recognizer.Dispose();
         }
 
         // Handle the SpeechRecognized event.  
         public void Recognizer_SpeechRecognized(object sender, SpeechRecognizedEventArgs e)
         {
-            string hej = "hej";
-            string hej2 = "2hej";
+            if (e.Result.Text == "monkey")
+            {
+                activated = true;
+            }
+
+            else {
+
+                activated = false;
+            
+            }
 
             gui.setLabel("Recognized text: " + e.Result.Text);
+
+            StopListening();
+            StartListening();
         }
 
     }
