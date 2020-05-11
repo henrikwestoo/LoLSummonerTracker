@@ -29,7 +29,7 @@ namespace LoLSummonerTracker
                 choiceList.Add(new string[] { "monkey"});
             }
 
-            else { choiceList.Add(new string[] { "gorilla" , "baboon" }); }
+            else { choiceList.Add(new string[] { "top" , "jungle", "middle" , "bottom" , "support" }); }
 
             GrammarBuilder grammarBuilder = new GrammarBuilder();
             grammarBuilder.Culture = new System.Globalization.CultureInfo("en-US");
@@ -64,6 +64,34 @@ namespace LoLSummonerTracker
             }
 
             else {
+
+                switch (e.Result.Text) {
+
+                    case "top":
+                        gui.SummonerUsed("top");
+                        break;
+
+
+                    case "jungle":
+                        gui.SummonerUsed("jungle");
+                        break;
+
+
+                    case "middle":
+                        gui.SummonerUsed("middle");
+                        break;
+
+
+                    case "bottom":
+                        gui.SummonerUsed("bottom");
+                        break;
+
+
+                    case "support":
+                        gui.SummonerUsed("support");
+                        break;
+
+                }
 
                 activated = false;
             

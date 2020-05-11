@@ -33,7 +33,36 @@ namespace LoLSummonerTracker
 
         public void setLabel(string text)
         {
-            label1.Text = text;
+            label6.Text = text;
+        }
+
+        public void SummonerUsed(String position) {
+
+            switch (position) {
+
+                case "top":
+                    new Logic(0, 10, label1).start(); new Logic(0, 15, label1b).start();
+                    break;
+
+                case "jungle":
+                    new Logic(0, 10, label2).start(); new Logic(0, 15, label2b).start();
+                    break;
+
+                case "middle":
+                    new Logic(0, 10, label3).start(); new Logic(0, 15, label3b).start();
+                    break;
+
+                case "bottom":
+                    new Logic(0, 10, label4).start(); new Logic(0, 15, label4b).start();
+                    break;
+
+                case "support":
+                    new Logic(0, 10, label5).start(); new Logic(0, 15, label5b).start();
+                    break;
+          
+            
+            }
+        
         }
 
 
